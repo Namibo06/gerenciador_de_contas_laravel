@@ -16,12 +16,12 @@
             </div><!--back-page-->
 
             <div class="title">
-                <h2>Conta a Pagar</h2>
+                <h2>Conta a Receber</h2>
             </div><!--title-->
         </header>
 
         <div class="form">
-            <form action="{{route('conta_pagar')}}" method="post">
+            <form action="{{route('conta_receber')}}" method="post">
                 @csrf
 
                 @if ($id_user)

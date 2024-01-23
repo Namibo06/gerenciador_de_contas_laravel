@@ -7,6 +7,7 @@
     <title>Contas</title>
     <link rel="stylesheet" href="{{asset('css/global.css')}}">
     <link rel="stylesheet" href="{{asset('css/home.css')}}">
+    <link rel="stylesheet" href="{{asset('css/home.responsive.css')}}">
     @vite(['resources/css/app.css'])
 
 </head>
@@ -38,6 +39,11 @@
                     <p>Bem Vindo {{$name_user}}</p>
                 @else
                     <p>Bem Vindo</p>
+                @endif
+
+                @if ($data_mes)
+                    <p>{{$data_mes}}</p>
+                    {{--pegar somente contas para vencimento do mês,colocar data de pagamento como data de vencimento para isso--}}
                 @endif
             </div>
             <div class="dashboard-data">
@@ -91,33 +97,32 @@
                 </div><!--dashboard-data-receive-->
 
                 <div class="dashboard-data-total">
-                    <div class="dashboard-data-total-start">
-                        <h3>Entradas</h3>
-                        @if ($count_receive)
-                            <p>R$<span>{{number_format($count_receive,2,',','.')}}</span></p>
-                        @else
-                            <p>R$ <span>0,00</span></p>
-                        @endif
-                    </div><!--dashboard-data-total-start-->
-
-                    <div class="dashboard-data-total-end">
-                        <h3>Saídas</h3>
-                        @if ($count_pay)
-                            <p>R$<span>{{number_format($count_pay,2,',','.')}}</span></p>
-                        @else
-                            <p>R$0,00</p>
-                        @endif
-                    </div><!--dashboard-data-total-end-->
-
-                    <div class="dashboard-data-total-together">
-                        <h3>Entradas - Saídas | Caixa</h3>
-                        @if ($box < 0)
-                            <p style="color: #FF0000">R$<span>{{$box}}</span></p>
-                        @else
-                            <p style="color: #00ffaa">R$<span>{{$box}}</span></p>
-                        @endif
-
-                    </div><!--dashboard-data-total-together-->
+                    <div class="box">
+                        <div class="dashboard-data-total-start">
+                            <h3>Entradas</h3>
+                            @if ($count_receive)
+                                <p>R$<span>{{number_format($count_receive,2,',','.')}}</span></p>
+                            @else
+                                <p>R$ <span>0,00</span></p>
+                            @endif
+                        </div><!--dashboard-data-total-start-->
+                        <div class="dashboard-data-total-end">
+                            <h3>Saídas</h3>
+                            @if ($count_pay)
+                                <p>R$<span>{{number_format($count_pay,2,',','.')}}</span></p>
+                            @else
+                                <p>R$0,00</p>
+                            @endif
+                        </div><!--dashboard-data-total-end-->
+                        <div class="dashboard-data-total-together">
+                            <h3>Entradas - Saídas | Caixa</h3>
+                            @if ($box < 0)
+                                <p style="color: #FF0000">R$<span>{{$box}}</span></p>
+                            @else
+                                <p style="color: #00ffaa">R$<span>{{$box}}</span></p>
+                            @endif
+                        </div><!--dashboard-data-total-start-->
+                    </div><!--box-->
                 </div><!--dashboard-data-total-->
             </div><!--dashboard-data-->
             <div class="dashboard-messages">

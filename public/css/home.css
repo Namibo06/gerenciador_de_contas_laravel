@@ -69,13 +69,12 @@ div.dashboard-data{
 }
 
 div.dashboard-data-pay,div.dashboard-data-receive,div.dashboard-data-total{
-    padding: 10px;
+    padding: 10px 10px 10px 30px;
     width: 270px;
     height: 180px;
     background-color: #1aceb0ec;
     color: #ffffff;
     border-radius: 5px;
-    padding-left: 30px;
     box-shadow: 1px 0px 8px rgba(12, 15, 90, 0.589);
 }
 

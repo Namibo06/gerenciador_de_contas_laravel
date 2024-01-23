@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\ContaPagar;
 use App\Models\ContaReceber;
 use App\Models\Home;
+use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Validator;
 
@@ -13,6 +15,10 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $dataAtual = Carbon::now()->toDateString();
+
+        $dataMes = Carbon::parse($dataAtual)->format('d/m/Y');
+
         $idCookie = Cookie::get('id_user');
         $nameCookie = Cookie::get('name_user');
 
@@ -37,7 +43,7 @@ class HomeController extends Controller
 
         $box = $count_receive - $count_pay;
 
-        return view('home',['id_user'=>$idCookie,'name_user'=>$nameCookie,'count_pay'=>$count_pay,'with_pay'=>$with_pay,'without_pay'=>$without_pay,'count_with_pay'=>$count_with_pay,'count_without_pay'=>$count_without_pay,'count_porcent_paid_pay'=>$count_porcent_paid_pay,'count_porcent_unpaid_pay'=>$count_porcent_unpaid_pay,'count_receive'=>$count_receive,'with_receive'=>$with_receive,'without_receive'=>$without_receive,'count_with_receive'=>$count_with_receive,'count_without_receive'=>$count_without_receive,'count_porcent_paid_receive'=>$count_porcent_paid_receive,'count_porcent_unpaid_receive'=>$count_porcent_unpaid_receive,'box'=>$box]);
+        return view('home',['id_user'=>$idCookie,'name_user'=>$nameCookie,'count_pay'=>$count_pay,'with_pay'=>$with_pay,'without_pay'=>$without_pay,'count_with_pay'=>$count_with_pay,'count_without_pay'=>$count_without_pay,'count_porcent_paid_pay'=>$count_porcent_paid_pay,'count_porcent_unpaid_pay'=>$count_porcent_unpaid_pay,'count_receive'=>$count_receive,'with_receive'=>$with_receive,'without_receive'=>$without_receive,'count_with_receive'=>$count_with_receive,'count_without_receive'=>$count_without_receive,'count_porcent_paid_receive'=>$count_porcent_paid_receive,'count_porcent_unpaid_receive'=>$count_porcent_unpaid_receive,'box'=>$box,'data_mes'=>$dataMes]);
 
     }
 
